@@ -9,7 +9,7 @@ namespace MyFirstAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class PeopleController : ControllerBase
     {
         // set up some test data
         private static readonly List<Person> _people = new List<Person>
