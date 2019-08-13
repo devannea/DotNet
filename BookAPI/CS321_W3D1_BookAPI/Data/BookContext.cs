@@ -5,12 +5,12 @@ namespace CS321_W3D1_BookAPI.Data
 {
     public class BookContext : DbContext
     {
-        // TODO: implement a DbSet<Book> property
+        public DbSet<Book> Books { get; set; }
 
         // This method runs once when the DbContext is first used.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // TODO: use optionsBuilder to configure a Sqlite db
+            optionsBuilder.UseSqlite("Data source=books.db");
         }
 
         // This method runs once when the DbContext is first used.
@@ -20,7 +20,11 @@ namespace CS321_W3D1_BookAPI.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // TODO: configure some seed data in the books table
+            modelBuilder.Entity<Book>().HasData(
+                new Book { Id = 1, Title = "The Grapes of Wrath", Author = "John Steinbeck", Category = "Historical Fiction" },
+                new Book { Id = 2, Title = "Cannery Row", Author = "John Steinbeck", Category = "Historical Fiction" },
+                new Book { Id = 3, Title = "The Shining", Author = "Stephen King", Category = "Horror" }
+                );
         }
 
     }

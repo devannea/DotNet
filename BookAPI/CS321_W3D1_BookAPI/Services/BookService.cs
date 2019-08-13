@@ -10,24 +10,26 @@ namespace CS321_W3D1_BookAPI.Services
 
         private readonly BookContext _bookContext;
 
-        public BookService(/* TODO: add a parameter so BookContext can be injected */)
+        public BookService(BookContext bookContext)
         {
-            // TODO: keep a reference to the BookContext in _bookContext
+            _bookContext = bookContext;
         }
 
         public Book Add(Book book)
         {
-            // TODO: implement add
+            _bookContext.Books.Add(book);
+            _bookContext.SaveChanges();
+            return book;
         }
 
         public Book Get(int id)
         {
-            // TODO: return the specified Book using Find()
+            return _bookContext.Books.Find(id);
         }
 
         public IEnumerable<Book> GetAll()
         {
-            // TODO: return all Books using ToList()
+            return _bookContext.Books.ToList();
         }
 
         public Book Update(Book updatedBook)
@@ -56,7 +58,8 @@ namespace CS321_W3D1_BookAPI.Services
 
         public void Remove(Book book)
         {
-            // TODO: remove the book
+            _bookContext.Books.Remove(book);
+            _bookContext.SaveChanges();
         }
 
     }
