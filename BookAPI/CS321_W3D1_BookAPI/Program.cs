@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace BookAPI
+namespace CS321_W3D1_BookAPI
 {
     public class Program
     {

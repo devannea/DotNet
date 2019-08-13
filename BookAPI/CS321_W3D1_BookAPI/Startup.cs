@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CS321_W3D1_BookAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using BookAPI.Data;
-using BookAPI.Services;
 
-namespace BookAPI
+namespace CS321_W3D1_BookAPI
 {
     public class Startup
     {
@@ -29,9 +22,9 @@ namespace BookAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<BookContext>();
+            // TODO: register the BookContext for injection using AddDbContext
 
-            services.AddScoped<IBookService, BookService>();
+            // TODO: register the BookService for injection using AddScoped
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
