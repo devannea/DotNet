@@ -22,8 +22,8 @@ namespace CS321_W4D1_BookAPI.Controllers
         {
             // TODO: convert domain models to apimodels
             var bookModels = _bookService
-                .GetAll();
-
+                 .GetAll()
+                 .ToApiModels(); // convert Books to BookModels
             return Ok(bookModels);
         }
 
@@ -33,7 +33,9 @@ namespace CS321_W4D1_BookAPI.Controllers
         public IActionResult Get(int id)
         {
             // TODO: convert domain model to apimodel
-            var book = _bookService.Get(id);
+             var book = _bookService
+                 .Get(id)
+                 .ToApiModel();
             if (book == null) return NotFound();
             return Ok(book.ToApiModel());
         }
@@ -47,7 +49,7 @@ namespace CS321_W4D1_BookAPI.Controllers
             {
                 // TODO: convert apimodel to domain model
                 // add the new book
-                _bookService.Add(newBook);
+                 _bookService.Add(newBook.ToDomainModel());
             }
             catch (System.Exception ex)
             {
@@ -62,7 +64,7 @@ namespace CS321_W4D1_BookAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] BookModel updatedBook)
         {
-            var book = _bookService.Update(updatedBook);
+            var book = _bookService.Update(updatedBook.ToDomainModel());
             if (book == null) return NotFound();
             return Ok(book.ToApiModel());
         }
@@ -76,5 +78,19 @@ namespace CS321_W4D1_BookAPI.Controllers
             _bookService.Remove(book);
             return NoContent();
         }
+
+        // GET api/author/{authorId}/books
+         // NOTE that the route specified in HttpGet begins with a forward slash.
+         // This overrides the Route("/api/[controller]") specified on the BooksController
+         // class.
+         [HttpGet("/api/authors/{authorId}/books")]
+         public IActionResult GetBooksForAuthor(int authorId)
+         {
+             var bookModels = _bookService
+                 .GetBooksForAuthor(authorId)
+                 .ToApiModels();
+
+             return Ok(bookModels);
+         }
     }
 }

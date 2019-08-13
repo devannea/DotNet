@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CS321_W4D1_BookAPI.Data;
 using CS321_W4D1_BookAPI.Models;
 using CS321_W4D1_BookAPI.Services;
@@ -8,44 +10,43 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CS321_W4D1_BookAPI.Services
 {
-    public class AuthorService : IAuthorService
+    public class PublisherService : IPublisherService
     {
-
         private readonly BookContext _bookContext;
 
-        public AuthorService(BookContext bookContext)
+        public PublisherService(BookContext bookContext)
         {
             // TODO: keep a reference to the AuthorContext in _AuthorContext
             _bookContext = bookContext;
         }
 
-        public Author Add(Author Author)
+        public Publisher Add(Publisher Publisher)
         {
             // TODO: implement add
-            _bookContext.Authors.Add(Author);
+            _bookContext.Publishers.Add(Publisher);
             _bookContext.SaveChanges();
-            return Author;
+            return Publisher;
         }
 
-        public Author Get(int id)
+        public Publisher Get(int id)
         {
             // TODO: return the specified Author using Find()
-            return _bookContext.Authors.Find(id);
+            return _bookContext.Publishers.Find(id);
         }
 
-        public IEnumerable<Author> GetAll()
+        public IEnumerable<Publisher> GetAll()
         {
             // TODO: return all Authors using ToList()
-            return _bookContext.Authors.ToList();
+            return _bookContext.Publishers.ToList();
         }
 
-        public Author Update(Author updatedAuthor)
+        public Publisher Update(Publisher updatedPublisher)
         {
             // get the ToDo object in the current list with this id 
-            var currentAuthor = _bookContext.Authors.Find(updatedAuthor.Id);
+            var currentPublisher = _bookContext.Publishers.Find(updatedPublisher.Id);
 
             // return null if todo to update isn't found
-            if (currentAuthor == null) return null;
+            if (currentPublisher == null) return null;
 
             // NOTE: This method is already completed for you, but note
             // how the property values are copied below.
@@ -53,22 +54,21 @@ namespace CS321_W4D1_BookAPI.Services
             // copy the property values from the changed todo into the
             // one in the db. NOTE that this is much simpler than individually
             // copying each property.
-            _bookContext.Entry(currentAuthor)
+            _bookContext.Entry(currentPublisher)
                 .CurrentValues
-                .SetValues(updatedAuthor);
+                .SetValues(updatedPublisher);
 
             // update the todo and save
-            _bookContext.Authors.Update(currentAuthor);
+            _bookContext.Publishers.Update(currentPublisher);
             _bookContext.SaveChanges();
-            return currentAuthor;
+            return currentPublisher;
         }
 
-        public void Remove(Author Author)
+        public void Remove(Publisher Publisher)
         {
             // TODO: remove the Author
-            _bookContext.Authors.Remove(Author);
+            _bookContext.Publishers.Remove(Publisher);
             _bookContext.SaveChanges();
         }
-
     }
 }
