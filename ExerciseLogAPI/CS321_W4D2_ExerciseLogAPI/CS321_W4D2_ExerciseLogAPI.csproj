@@ -14,4 +14,9 @@
     <Folder Include="ApiModels\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExerciseLogAPI.Core\ExerciseLogAPI.Core.csproj" />
+    <ProjectReference Include="..\ExerciseLogAPI.Infrastructure\ExerciseLogAPI.Infrastructure.csproj" />
+  </ItemGroup>
 </Project>
