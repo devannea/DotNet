@@ -5,7 +5,7 @@ using ExerciseLogAPI.Core.Models;
 
 namespace ExerciseLogAPI.Core.Services
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         // Create
         User Add(User todo);
