@@ -1,10 +1,15 @@
-﻿using CS321_W5D1_ExerciseLogAPI.Core.Services;
+﻿using System.Text;
+using CS321_W5D1_ExerciseLogAPI.Core.Models;
+using CS321_W5D1_ExerciseLogAPI.Core.Services;
 using CS321_W5D1_ExerciseLogAPI.Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CS321_W5D1_ExerciseLogAPI
 {
@@ -22,10 +27,27 @@ namespace CS321_W5D1_ExerciseLogAPI
         {
             services.AddDbContext<AppDbContext>();
 
-            // TODO: Prep Part 1: Add Identity services (Part 1 of prep exercise)
-
-            // TODO: Prep Part 2: Add JWT support 
-
+            services.AddIdentity<User, IdentityRole>()
+                // tell Identity which DbContext to use for user-related tables
+                .AddEntityFrameworkStores<AppDbContext>();
+            
+            // Add JWT support
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
             services.AddScoped<IActivityRepository, ActivityRepository>();
             services.AddScoped<IActivityService, ActivityService>();
             services.AddScoped<IActivityTypeRepository, ActivityTypeRepository>();
@@ -50,8 +72,8 @@ namespace CS321_W5D1_ExerciseLogAPI
 
             app.UseHttpsRedirection();
 
-            // TODO: Prep Part 1: Use authentication 
-
+            
+            app.UseAuthentication();
             app.UseMvc();
         }
 
