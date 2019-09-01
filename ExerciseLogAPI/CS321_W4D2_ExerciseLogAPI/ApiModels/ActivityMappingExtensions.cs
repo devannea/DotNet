@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExerciseLogAPI.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,9 +13,14 @@ namespace CS321_W4D2_ExerciseLogAPI.ApiModels
             return new ActivityModel
             {
                 Id = activity.Id,
-                // TODO: fill in property mappings
-                // TODO: the ActivityType property should contain the name of the activity type
-                // TODO: the User property should contain the user's name
+                Date = activity.Date,
+                Duration = activity.Duration,
+                Distance = activity.Distance,
+                ActivityTypeId = activity.ActivityType.Id,
+                ActivityType = activity.ActivityType,
+                UserId = activity.User.Id,
+                User = activity.User,
+                Notes = activity.Notes
             };
         }
 
@@ -23,8 +29,11 @@ namespace CS321_W4D2_ExerciseLogAPI.ApiModels
             return new Activity
             {
                 Id = activityModel.Id,
-                // TODO: fill in property mappings
-                // TODO: leave User and ActivityType null
+                Date = activityModel.Date,
+                Duration = activityModel.Duration,
+                Distance = activityModel.Distance,
+                ActivityTypeId = activityModel.ActivityTypeId,
+                ActivityType = activityModel.ActivityType
             };
         }
 

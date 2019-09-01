@@ -1,5 +1,4 @@
-﻿using System;
-using CS321_W4D2_ExerciseLogAPI.Core.Models;
+﻿using ExerciseLogAPI.Core.Models;
 
 namespace CS321_W4D2_ExerciseLogAPI.ApiModels
 {

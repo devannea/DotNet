@@ -5,8 +5,12 @@ using ExerciseLogAPI.Core.Models;
 
 namespace ExerciseLogAPI.Core.Services
 {
-    interface IUserService
+    public interface IUserService
     {
-        User Add(User todo);
+        User Add(User User);
+        User Get(int id);
+        IEnumerable<User> GetAll();
+        void Remove(User User);
+        User Update(User updatedUser);
     }
 }
