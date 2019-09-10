@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ApiModels\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CS321_W4D2_ExerciseLogAPI.Infrastructure\CS321_W4D2_ExerciseLogAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\ExerciseLogAPI.Core\CS321_W4D2_ExerciseLogAPI.Core.csproj" />
+  </ItemGroup>
+</Project>
