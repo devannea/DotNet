@@ -3,7 +3,7 @@ using CS321_W4D2_ExerciseLogAPI.Core.Models;
 
 namespace CS321_W4D2_ExerciseLogAPI.Core.Services
 {
-    interface IActivityService
+    public interface IActivityService
     {
         Activity Add(Activity Activity);
         Activity Get(int id);

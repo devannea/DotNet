@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CS321_W4D2_ExerciseLogAPI.Core.Services
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         // Create
         User Add(User todo);

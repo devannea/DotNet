@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CS321_W4D2_ExerciseLogAPI.Core.Services
 {
-    interface IActivityRepository
+    public interface IActivityRepository
     {
         // Create
         Activity Add(Activity todo);

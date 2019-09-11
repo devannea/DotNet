@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CS321_W4D2_ExerciseLogAPI.Core.Services
 {
-    class ActivityService : IActivityService
+    public class ActivityService : IActivityService
     {
         private IActivityRepository _activityRepo;
 

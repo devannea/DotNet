@@ -7,7 +7,7 @@ using System.IO;
 
 namespace CS321_W4D2_ExerciseLogAPI.Infrastructure.Data
 {
-    class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Activity> Activities { get; set; }

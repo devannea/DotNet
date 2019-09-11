@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CS321_W4D2_ExerciseLogAPI.Core.Services
 {
-    class UserService : IUserService
+    public class UserService : IUserService
     {
         private IUserRepository _userRepo;
 
