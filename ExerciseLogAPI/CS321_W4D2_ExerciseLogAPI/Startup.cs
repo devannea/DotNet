@@ -35,8 +35,8 @@ namespace CS321_W4D2_ExerciseLogAPI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IActivityRepository, ActivityRepository>();
             services.AddScoped<IActivityService, ActivityService>();
-            services.AddScoped<IActivityTypeRepository, UserRepository>();
-            services.AddScoped<IActivityTypeService, UserService>();
+            services.AddScoped<IActivityTypeRepository, ActivityTypeRepository>();
+            services.AddScoped<IActivityTypeService, ActivityTypeService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
